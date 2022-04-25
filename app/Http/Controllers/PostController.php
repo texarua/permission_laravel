@@ -9,8 +9,8 @@ class PostController extends Controller
 {
     //
     public function show($id) {
+        $this->authorize('view-post');
         $post = Post::findOrFail($id);
-        $this->authorize($post, ['delete']);
         return view('post_show', compact('post'));
     }
 }
